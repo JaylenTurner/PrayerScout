@@ -24,15 +24,13 @@ public class PrayerScoutOverlay extends OverlayPanel
     {
         String name = plugin.getTargetName();
         if (name == null || name.isEmpty()) return null;
-
         PrayerScoutRecommendations.Result result = PrayerScoutRecommendations.lookup(name);
         if (!plugin.showUnknown() && !result.verified) return null;
-
         panelComponent.getChildren().clear();
-        panelComponent.getChildren().add(TitleComponent.builder().text("Prayer Scout").build());
+        panelComponent.getChildren().add(TitleComponent.builder().text("Monster Guide").build());
         panelComponent.getChildren().add(LineComponent.builder().left("Monster").right(name).build());
-        panelComponent.getChildren().add(LineComponent.builder().left("Prayer").right(result.recommendation).build());
-        panelComponent.getChildren().add(LineComponent.builder().left("Note").right(result.note).build());
+        panelComponent.getChildren().add(LineComponent.builder().left("Attack styles").right(result.recommendation).build());
+        panelComponent.getChildren().add(LineComponent.builder().left("Info").right(result.note).build());
         return super.render(graphics);
     }
 }
